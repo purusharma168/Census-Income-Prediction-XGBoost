@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    <title>XGBoost ALgorithms</title>
+  </head>
+  <body class="bg-gray-200">
+    <header class="text-gray-600 body-font -my-8">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-green-500 rounded-full" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <span class="ml-3 text-xl">XGBoost ALgorithms</span>
+          </a>
+          <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+            <a href="/" class="mr-5 hover:text-gray-900">Home</a>
+            <a href="/prediction" class="mr-5 hover:text-gray-900">prediction</a>
+
+          </nav>
+        </div>
+      </header><hr>
+      <section class="text-gray-600 body-font -my-8">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-col text-center w-full mb-20">
+            <h2 class="text-xs text-green-500 tracking-widest font-medium title-font mb-1">Machine learning Assignment</h2>
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">XGBoost ALgorithms</h1>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">XGBoost is an algorithm that has recently been dominating applied machine learning and Kaggle competitions for structured or tabular data. XGBoost is an implementation of gradient boosted decision trees designed for speed and performance.</p>
+            <br><p class="text-primary"><b>{{prediction_text}}</b></p>
+          </div>
+          <div class="center">
+            <form action="/prediction" method="POST">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Enter age</label>
+                  <input type="text" class="form-control" id="age" name="age" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Enter fnlwght</label>
+                  <input type="text" class="form-control" id="fnlwght" name="fnlwght" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Enter education num</label>
+                  <input type="text" class="form-control" id="educationnum" name="educationnum" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Enter capital-gain</label>
+                  <input type="text" class="form-control" id="gain" name="gain" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Enter capital-loss</label>
+                  <input type="text" class="form-control" id="loss" name="loss" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Enter hours-per-week:</label>
+                  <input type="text" class="form-control" id="hour" name="hour" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Select work class</label>
+                  <select id="work" name="work" class="form-select" aria-label="Default select example">
+                    <option selected value="0">Open this select menu</option>
+                    <option value="Private">Private</option>
+                    <option value="Self-emp-not-inc">Self-emp-not-inc</option>
+                    <option value="Self-emp-inc">Self-emp-inc</option>
+                    <option value="Federal-gov">Federal-gov</option>
+                    <option value="Local-gov">Local-gov</option>
+                    <option value="State-gov">State-gov</option>
+                    <option value="Never-worked">Without-pay</option>
+                    <option value="Never-worked">Never-worked</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Select Education</label>
+                  <select id="education" name="education" class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="Primary">1st-4th</option>
+                    <option value="Primary">5th-6th</option>
+                    <option value="Primary">7th-8th</option>
+                    <option value="Primary">9th</option>
+                    <option value="Primary">10th</option>
+                    <option value="Primary">11th</option>
+                    <option value="Primary">12th</option>
+                    <option value="Bachelors">Bachelors</option>
+                    <option value="Some-college">Some-college</option>
+                    <option value="HS-grad">HS-grad</option>
+                    <option value="Prof-school">Prof-school</option>
+                    <option value="Assoc-acdm">Assoc-acdm</option>
+                    <option value="Assoc-voc">Assoc-voc</option>
+                    <option value="Masters">Masters</option>
+                    <option value="Doctorate">Doctorate</option>
+                    <option value="Preschool">Preschool</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label"> Select marital-status</label>
+                  <select id="marital" name="marital" class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="Married-civ-spouse">Married-civ-spouse</option>
+                    <option value="Divorced">Divorced</option>
+                    <option value="Separated">Separated</option>
+                    <option value="Widowed">Widowed</option>
+                    <option value="Married-spouse-absent">Married-spouse-absent</option>
+                    <option value="Never-married">Never-married</option> 
+                    <option value="Married-civ-spouse">Married-AF-spoused</option> 
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Select occupation</label>
+                  <select id="occupation" name="occupation" class="form-select" aria-label="Default select example">
+                    <option selected value="0">Open this select menu</option>
+                    <option value="0">Armed-Forces</option>
+                    <option value="Tech-support">Tech-support</option>
+                    <option value="Craft-repair">Craft-repair</option>
+                    <option value="Other-service">Other-service</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Exec-managerial">Exec-managerial</option>
+                    <option value="Prof-specialty">Prof-specialty</option>
+                    <option value="Handlers-cleaners">Handlers-cleaners</option>
+                    <option value="Adm-clerical">Adm-clerical</option>
+                    <option value="Farming-fishing">Farming-fishing</option>
+                    <option value="Transport-moving">Transport-moving</option>vvvvvvs
+                    <option value="Priv-house-serv">Priv-house-serv</option>
+                    <option value="Protective-serv">Transport-moving</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Select relationship</label>
+                  <select id="relation" name="relation" class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="Wife">Wife</option>
+                    <option value="Own-child">Own-child</option>
+                    <option value="Husband">Husband</option>
+                    <option value="Not-in-family">Not-in-family</option>
+                    <option value="Other-relative">Other-relative</option>
+                    <option value="Unmarried">Unmarried</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Select race</label>
+                  <select id="race" name="race" class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="White">White</option>
+                    <option value="Other">Other</option>
+                    <option value="Black">Black</option>
+                    <option value="Asian-Pac-Islander">Asian-Pac-Islander</option>
+                    <option value="Amer-Indian-Eskimo">Amer-Indian-Eskimo</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Select Gender</label>
+                  <select id="gender" name="gender" class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">select Native Country</label>
+                  <select id="country" name="country" class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="North_America"> 'United-States' ,'Canada'</option>
+                    <option value="Central_America">' Puerto-Rico',' El-Salvador',' Cuba',' Jamaica',' Dominican-Republic',' Guatemala',' Haiti',' Nicaragua',' Trinadad&Tobago',' Honduras'</option>
+                    <option value="South_America">' Mexico',' Columbia',' Vietnam',' Peru',' Ecuador',' South',' Outlying-US(Guam-USVI-etc)'</option>
+                    <option value="EU">' Germany',' England',' Italy',' Poland',' Portugal',' Greece',' Yugoslavia',' France',' Ireland',' Scotland',' Hungary',' Holand-Netherlands'</option>
+                    <option value="Asian">' India',' Iran',' China',' Japan',' Thailand',' Hong',' Cambodia',' Laos',' Philippines',' Taiwan'</option>
+                  </select>
+                </div>
+         
+              
+                <button type="submit" class="btn btn-success">Submit</button>
+              </form>
+          </div>
+        </div>
+        
+      </section>
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+  </body>
+</html>
